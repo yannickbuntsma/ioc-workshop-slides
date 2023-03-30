@@ -9,7 +9,7 @@ class: 'x'
 # https://sli.dev/custom/highlighters.html
 highlighter: shiki
 # show line numbers in code blocks
-lineNumbers: true
+lineNumbers: false
 # some information about the slides, markdown enabled
 info: |
   ## Slidev Starter Template
