@@ -41,7 +41,7 @@ h1 {
 ```ts {all|1|3||4|6|7-9|12-14|all|14-15}
 type Pizza = { id: ID; name: string; toppings: Topping[]; isVegetarian: boolean}
 
-function filterPizzas(pizzas: Pizza[], keepPizzaType?: "veggie" | "vegan", flipResults?: boolean) {
+function filterPizzas(pizzas: Pizza[], keepPizzaType?: "veggie" | "tomatoSauce", flipOrder?: boolean) {
   let results = []
 
   pizzas.forEach((piz) => {
@@ -93,7 +93,7 @@ code{
 ```ts {all|3|12-14|19-21}
 type Pizza = { id: ID; name: string; toppings: Topping[]; isVegetarian: boolean}
 
-function filterPizzas(pizzas: Pizza[], keepPizzaType?: "veggie" | "vegan", flipResults?: boolean) {
+function filterPizzas(pizzas: Pizza[], keepPizzaType?: "veggie" | "tomatoSauce", flipOrder?: boolean) {
   let results = []
 
   pizzas.forEach((piz) => {
@@ -102,7 +102,7 @@ function filterPizzas(pizzas: Pizza[], keepPizzaType?: "veggie" | "vegan", flipR
     }
   })
 
-  if (flipResults) {
+  if (flipOrder) {
     return results.reverse()
   }
 
@@ -124,7 +124,7 @@ const allVeggieFlipped = filterPizzas(pizzas, "veggie", true)
 type Pizza = { id: ID; name: string; toppings: Topping[]; isVegetarian: boolean}
 
 // For reference
-function filterPizzas(pizzas: Pizza[], keepPizzaType?: "veggie" | "vegan", keepVegan?: boolean)
+function filterPizzas(pizzas: Pizza[], keepPizzaType?: "veggie" | "tomatoSauce", keeptomatoSauce?: boolean)
 
 // Not possible...
 const flipped = filterPizzas(pizzas, true)
@@ -135,13 +135,15 @@ const flipped = filterPizzas(pizzas, undefined, true)
 
 ---
 
-# Extending the function
+# Extending the function - with options
 
 
-```ts {all|3|12-14|19-21}
+```ts {all|2-5|21-24}
 type Pizza = { id: ID; name: string; toppings: Topping[]; isVegetarian: boolean}
+type Options = { keepPizzaType?: "veggie" | "tomatoSauce"; flipOrder?: boolean }
 
-function filterPizzas(pizzas: Pizza[], keepPizzaType?: "veggie" | "vegan", flipResults?: boolean) {
+function filterPizzas(pizzas: Pizza[], options?: Options) {
+  const { keepPizzaType, flipOrder } = options || {}
   let results = []
 
   pizzas.forEach((piz) => {
@@ -150,15 +152,16 @@ function filterPizzas(pizzas: Pizza[], keepPizzaType?: "veggie" | "vegan", flipR
     }
   })
 
-  if (flipResults) {
+  if (flipOrder) {
     return results.reverse()
   }
 
   return results
 }
 
-// Usage
-const allVeggie = filterPizzas(pizzas, "veggie")
-const allVeggieFlipped = filterPizzas(pizzas, "veggie", true)
+// Super clear
+const allVeggie = filterPizzas(pizzas, { keepPizzaType: "veggie" })
+// Hooray!
+const flipped = filterPizzas(pizzas, { flipOrder: true })
 ```
 ---
