@@ -1,33 +1,42 @@
 ---
-# try also 'default' to start simple
 theme: light-icons
-# random image from a curated Unsplash collection by Anthony
-# like them? see https://unsplash.com/collections/94734566/slidev
 background: https://source.unsplash.com/collection/94734566/1920x1080
-# apply any windi css classes to the current slide
-class: 'x'
-# https://sli.dev/custom/highlighters.html
+class: x
 highlighter: shiki
-# show line numbers in code blocks
 lineNumbers: false
-# some information about the slides, markdown enabled
 info: |
   ## Slidev Starter Template
   Presentation slides for developers.
 
   Learn more at [Sli.dev](https://sli.dev)
-# persist drawings in exports and build
 drawings:
   persist: false
-# use UnoCSS (experimental)
 css: unocss
 ---
 
 <style>
 h1 {
-  @apply text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-blue-700;
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-blue-700;
 }
 </style>
+
+---
+theme: none
+layout: intro
+image: 'https://images.unsplash.com/photo-1453974336165-b5c58464f1ed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3546&q=80'
+---
+
+  <div class="mb-4 absolute bottom-4 left-12">
+    <div class="text-8xl text-white text-opacity-60" style="font-weight:600;" >
+      Inversion of control
+    </div> 
+      <span class="text-5xl text-primary-lighter text-opacity-80" style="font-weight:500;" >
+      Provide control with constraints
+    </span>
+  </div>
+
+
+---
 
 # Building a function
 
